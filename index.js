@@ -1,3 +1,4 @@
+ymaps3 = window.ymaps3;
 initMap();
 
 async function initMap() {
