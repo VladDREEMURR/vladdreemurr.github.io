@@ -14,56 +14,76 @@
       src="../variables.ts"
     ></script>
     <script data-plugins="transform-modules-umd" data-presets="typescript" type="text/babel">
-    //   import {LOCATION} from '../variables';
+      // import {LOCATION} from '../variables';
 
-    //   window.map = null;
+      // window.map = null;
 
-    //   main();
-    //   async function main() {
-    //     // Waiting for all api elements to be loaded
+      // main();
+      // async function main() {
+      //   // Waiting for all api elements to be loaded
+      //   await ymaps3.ready;
+      //   const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+      //   // Initialize the map
+      //   map = new YMap(
+      //     // Pass the link to the HTMLElement of the container
+      //     document.getElementById('app'),
+      //     // Pass the map initialization parameters
+      //     {location: LOCATION, showScaleInCopyrights: true},
+      //     // Add a map scheme layer
+      //     [new YMapDefaultSchemeLayer({})]
+      //   );
+      // }
+    // init();
+
+    // async function init() {
     //     await ymaps3.ready;
-    //     const {YMap, YMapDefaultSchemeLayer} = ymaps3;
-    //     // Initialize the map
-    //     map = new YMap(
-    //       // Pass the link to the HTMLElement of the container
-    //       document.getElementById('app'),
-    //       // Pass the map initialization parameters
-    //       {location: LOCATION, showScaleInCopyrights: true},
-    //       // Add a map scheme layer
-    //       [new YMapDefaultSchemeLayer({})]
-    //     );
-    //   }
-    ymaps3.ready(init);
+    //     var myMap = new ymaps3.Map('map', {
+    //         center: [55.753994, 37.622093],
+    //         zoom: 9
+    //     });
 
-    function init() {
-        var myMap = new ymaps3.Map('map', {
-            center: [55.753994, 37.622093],
-            zoom: 9
-        });
-
-    ymaps3.geocode('Москва', {
+    //     ymaps3.geocode('Москва', {
             
-            results: 1
+    //         results: 1
             
-        }).then((res) => {
+    //     }).then((res) => {
             
-                let  firstGeoObject = res.geoObjects.get(0);
-                let coords = firstGeoObject.geometry.getCoordinates();
+    //             let  firstGeoObject = res.geoObjects.get(0);
+    //             let coords = firstGeoObject.geometry.getCoordinates();
 
-                console.log(coords);
+    //             console.log(coords);
 
-                ymaps3.borders.load('RU').then((geojson) => {
+    //             ymaps3.borders.load('RU').then((geojson) => {
                     
-                console.log(geojson);
+    //             console.log(geojson);
                 
-                }, (e) => {
+    //             }, (e) => {
                     
-                console.log(e);
+    //             console.log(e);
                 
-                });
+    //             });
                 
-            });
-    }
+    //         });
+    // }
+    import {LOCATION} from '../variables';
+ 
+       window.map = null;
+ 
+       main();
+       async function main() {
+         // Waiting for all api elements to be loaded
+         await ymaps3.ready;
+         const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+         // Initialize the map
+         map = new YMap(
+           // Pass the link to the HTMLElement of the container
+           document.getElementById('app'),
+           // Pass the map initialization parameters
+           {location: LOCATION, showScaleInCopyrights: true},
+           // Add a map scheme layer
+           [new YMapDefaultSchemeLayer({})]
+         );
+       }
     </script>
 
     <!-- prettier-ignore -->
