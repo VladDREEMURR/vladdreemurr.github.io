@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Быстрый старт. Размещение интерактивной карты на странице</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script src="https://api-maps.yandex.ru/v3/?apikey=bf48d2d4-130a-47a1-9b68-1e1f6b34663d&lang=ru_RU"></script>
-    <script src="index.js"></script>
-</head>
-<body>
-    <div id="map" style="width: 600px; height: 400px;"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+    <!-- To make the map appear, you must add your apikey -->
+    <script src="https://api-maps.yandex.ru/v3/?apikey=bf48d2d4-130a-47a1-9b68-1e1f6b34663d&lang=en_US" type="text/javascript"></script>
+
+    <script
+      data-plugins="transform-modules-umd"
+      data-presets="typescript"
+      type="text/babel"
+      src="../variables.ts"
+    ></script>
+    <script data-plugins="transform-modules-umd" data-presets="typescript" type="text/babel">
+      import {LOCATION} from '../variables';
+
+      window.map = null;
+
+      main();
+      async function main() {
+        // Waiting for all api elements to be loaded
+        await ymaps3.ready;
+        const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+        // Initialize the map
+        map = new YMap(
+          // Pass the link to the HTMLElement of the container
+          document.getElementById('app'),
+          // Pass the map initialization parameters
+          {location: LOCATION, showScaleInCopyrights: true},
+          // Add a map scheme layer
+          [new YMapDefaultSchemeLayer({})]
+        );
+      }
+    </script>
+
+    <!-- prettier-ignore -->
+    <style> html, body, #app { width: 100%; height: 100%; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; } .toolbar { position: absolute; z-index: 1000; top: 0; left: 0; display: flex; align-items: center; padding: 16px; } .toolbar a { padding: 16px; }  </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
