@@ -33,15 +33,15 @@
     //       [new YMapDefaultSchemeLayer({})]
     //     );
     //   }
-    ymaps.ready(init);
+    ymaps3.ready(init);
 
     function init() {
-        var myMap = new ymaps.Map('map', {
+        var myMap = new ymaps3.Map('map', {
             center: [55.753994, 37.622093],
             zoom: 9
         });
 
-    ymaps.geocode('Москва', {
+    ymaps3.geocode('Москва', {
             
             results: 1
             
@@ -52,7 +52,7 @@
 
                 console.log(coords);
 
-                ymaps.borders.load('RU').then((geojson) => {
+                ymaps3.borders.load('RU').then((geojson) => {
                     
                 console.log(geojson);
                 
